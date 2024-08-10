@@ -8,7 +8,7 @@ Simple script for checking the availability of tiktok usernames, made in Python 
 
 # Installation:
 
-1. Install the latest version as a zip-archive with all the files here: [Tiktok Username Checker](https://github.com/mdevio/tiktok-username-checker/archive/refs/tags/Release.zip)
+1. Install the latest version as a zip-archive with all the files here: [Tiktok Username Checker](https://github.com/mdevio/tiktok-username-checker/archive/refs/heads/main.zip)
 
 2. Extract the zip-file and store the contents somewhere on your drive. To do this I would recommend using either [7-zip](https://www.7-zip.org/download.html) or [WinRAR](https://www.win-rar.com/download.html).
 
