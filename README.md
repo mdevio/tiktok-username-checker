@@ -1,4 +1,4 @@
-# Tiktok Username Checker - by mdevio
+# Tiktok Username Checker (proxyless) - by mdevio
 
 Simple script for checking the availability of tiktok usernames, made in Python 3.12.
 
