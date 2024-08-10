@@ -19,3 +19,7 @@ Simple script for checking the availability of tiktok usernames, made in Python 
 5. Run the following command: `pip install -r requirements.txt`. This command will install the necessary libraries which are needed for the program to run without issues.
 
 6. Start the program by writing `python Tiktok Username Checker.py` or by simply double clicking the python file.
+
+# Report bugs
+
+If you want to report any bugs or need any help, press [here](https://github.com/mdevio/TikTok-Username-Checker/issues).
