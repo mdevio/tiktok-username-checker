@@ -20,6 +20,10 @@ Simple script for checking the availability of tiktok usernames, made in Python 
 
 6. Start the program by writing `python Tiktok Username Checker.py` or by simply double clicking the python file.
 
+# To-do list
+
+- Username generator
+
 # Report bugs
 
 If you want to report any bugs or need any help, press [here](https://github.com/mdevio/TikTok-Username-Checker/issues).
