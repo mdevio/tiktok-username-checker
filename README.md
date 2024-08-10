@@ -23,3 +23,7 @@ Simple script for checking the availability of tiktok usernames, made in Python 
 # Report bugs
 
 If you want to report any bugs or need any help, press [here](https://github.com/mdevio/TikTok-Username-Checker/issues).
+
+# Disclaimer
+
+I am not liable for any actions taken using this script. It is intended solely for educational purposes.
