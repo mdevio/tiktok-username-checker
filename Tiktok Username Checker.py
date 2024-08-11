@@ -1,8 +1,9 @@
-import requests
-from colorama import Fore
-import ctypes
-import os
-import time
+try:
+    import requests, ctypes, os, time
+    from colorama import Fore
+except ImportError as package_not_installed:
+    input(f"Package {package_not_installed} is not installed.\nPress enter to exit the program.")
+
 directory = os.path.dirname(os.path.abspath(__file__)) # Get directory path
 usernames = []
 
