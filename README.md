@@ -18,7 +18,7 @@ This script can be useful if you want to obtain a username with as few character
 
 4. Run the following command: `cd PATH_YOU_COPIED` into the command prompt.
 
-5. Run the following command: `pip install -r requirements.txt`. This command will install the necessary libraries which are needed for the program to run without issues.
+5. Run the following command: `pip install -r requirements.txt`. This command will install the necessary packages which are needed for the program to run without issues.
 
 6. Start the program by writing `python Tiktok Username Checker.py` or by simply double clicking the python file.
 
