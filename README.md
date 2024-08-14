@@ -28,7 +28,7 @@ This script can be useful if you want to obtain a username with as few character
 
 # Report bugs
 
-If you want to report any bugs or need any help, press [here](https://github.com/mdevio/TikTok-Username-Checker/issues).
+If you want to report any bugs, need any help or want to contribute with ideas on how to improve the project, please press [here](https://github.com/mdevio/TikTok-Username-Checker/issues).
 
 # Disclaimer
 
