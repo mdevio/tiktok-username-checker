@@ -1,12 +1,13 @@
+# MADE BY @MDEVIO ON GITHUB
 try:
     import requests, ctypes, os, time, random, string
-    from colorama import Fore
+    from colorama import Fore, init
 except ImportError as package_not_installed:
     input(f"Package {package_not_installed} is not installed.\nPress enter to exit the program.")
 
 def update_title():
     remaining = len(usernames) - (available + unavailable)
-    ctypes.windll.kernel32.SetConsoleTitleW(f"Username Checker for TikTok | Available: {available} | Unavailable: {unavailable} | Remaining: {remaining} | Total: {available + unavailable}")
+    ctypes.windll.kernel32.SetConsoleTitleW(f"Username Checker for TikTok | Available/Banned: {available} | Unavailable: {unavailable} | Duplicates: {duplicates} | Remaining: {remaining} | Total: {available + unavailable}")
 
 directory = os.path.dirname(os.path.abspath(__file__)) # Get directory path
 usernames = []
@@ -26,36 +27,61 @@ $$$$$$$$\ $$\ $$\    $$$$$$$$\        $$\             $$\   $$\                 
                                                                                                                                                                                                                       """
 
 while True:
-    with open(rf"{directory}\main\usernames.txt", "r") as f:
-        lines = f.readlines()
-        for username in lines:
-            username = username.rstrip()
-            usernames.append(username)
+    init()
+    try:
+        with open(rf"{directory}\main\usernames.txt", "r") as f:
+            lines = f.readlines()
+            for username in lines:
+                username = username.rstrip()
+                usernames.append(username)
+    except FileNotFoundError:
+        with open(rf"{directory}\main\usernames.txt", "x") as f:
+            pass
     available_usernames = []
     available = 0
     unavailable = 0
+    duplicates = 0
+    tried_usernames = []
     update_title()
     print("\n" + title)
-    menu = int(input("[1] Start the TikTok Username Checker\n[2] Username Generator\n[3] Exit\n\nYour choice: "))
+    while True:
+        try:
+            menu = int(input("[1] Start the TikTok Username Checker\n[2] Username Generator\n[3] Clear 'usernames.txt'\n[4] Exit\n\nYour choice: "))
+            break
+        except ValueError:
+            print(Fore.RED + "\nChoose either 1, 2, 3 or 4.\n" + Fore.RESET)
+            time.sleep(2.5)
 
     if menu == 1:
-        for _ in usernames:
-            request = requests.get(f"https://www.tiktok.com/@{_}")
+        if usernames:
+            for username in usernames:
+                if username in tried_usernames:
+                    duplicates += 1
+                    update_title()
+                    print(Fore.YELLOW + "[Duplicate] " + f"https://www.tiktok.com/@{username}" + Fore.RESET)
+                elif username not in tried_usernames:
+                    request = requests.get(f"https://www.tiktok.com/@{username}")
+                    tried_usernames.append(username)
 
-            if "followingcount" not in request.text.lower():
-                available += 1
-                available_usernames.append(_)
-                update_title()
-                print(Fore.GREEN + request.url + Fore.RESET)
-            elif "followingcount" in request.text.lower():
-                unavailable += 1
-                update_title()
-                print(Fore.RED + request.url + Fore.RESET)
-            else:
-                print("Error!")
-                
-        print(f"All of the {available+unavailable} usernames were checked. The results are the following:\n\nAvailable: {available}\nUnavailable: {unavailable}\n\nAll of the available names were saved in a txt file called 'Available Usernames.txt' in the main folder in the same directory as the python file.")
-        time.sleep(5)
+                    if "followingcount" not in request.text.lower():
+                        available += 1
+                        available_usernames.append(username)
+                        update_title()
+                        print(Fore.GREEN + "[Available/Banned] " + request.url + Fore.RESET)
+                    elif "followingcount" in request.text.lower() or username.isdigit():
+                        unavailable += 1
+                        update_title()
+                        print(Fore.RED + "[Unavailable] " + request.url + Fore.RESET)
+                    elif request.status_code != 200:
+                        print("Ratelimited!")
+                    else:
+                        print("Error!")
+                    
+            print(f"\nAll of the {available+unavailable} usernames were checked. The results are the following:\n\nAvailable: {available}\nUnavailable: {unavailable}\nDuplicates: {duplicates}\n\nAll of the available names were saved in a txt file called 'Available Usernames.txt' in the main folder in the same directory as the python file.")
+            time.sleep(5)
+        else:
+            print(Fore.RED + "The file 'usernames.txt' is empty. Please generate usernames via the main menu or input usernames in the file." + Fore.RESET)
+            time.sleep(3)
 
         try:
             with open(rf"{directory}\main\Available Usernames.txt", "x") as f:
@@ -82,6 +108,10 @@ while True:
             else:
                 print(Fore.RED + "Username has to be between 2 and 24 characters." + Fore.RESET)
 
+        usernames = [] # Clear list with all usernames
+        with open(rf"{directory}\main\usernames.txt", "w"): # Clear usernames.txt if user wants to use the username generator
+            pass
+
         generated_usernames = []
         characters = string.ascii_letters + string.digits + "_."
 
@@ -95,8 +125,21 @@ while True:
         for generated_username in generated_usernames:
             with open(rf"{directory}\main\usernames.txt", "a") as f:
                 f.write(generated_username + "\n")
+        
+        print(Fore.GREEN + f"\nSuccessfully generated {amount_of_usernames} usernames with {amount_of_characters} characters each." + Fore.RESET)
+        time.sleep(3)
 
     elif menu == 3:
+        if usernames:
+            usernames = []
+            with open(rf"{directory}\main\usernames.txt", "w"):
+                pass
+            print("\nSuccessfully cleared the usernames.\n")
+        else:
+            print(Fore.RED + "The file 'usernames.txt' is already empty, cannot clear it." + Fore.RESET)
+
+    elif menu == 4:
         break
     else:
-        print("Choose either 1, 2 or 3.")
+        print(Fore.RED + "\nChoose either 1, 2, 3 or 4.\n" + Fore.RESET)
+        time.sleep(2.5)
