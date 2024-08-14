@@ -18,11 +18,11 @@ You can skip step 1 & 2 by typing the command `git clone https://github.com/mdev
 
 3. Open up the command prompt on your windows machine and set your directory to the directory where you have the Tiktok Username Checker folder. (Hold down shift & right click on the folder, then press "Copy as path".)
 
-4. Run the following command: `cd PATH_YOU_COPIED` into the command prompt.
+3.1. Run the following command: `cd PATH_YOU_COPIED` into the command prompt.
 
-5. Run the following command: `pip install -r requirements.txt`. This command will install the necessary packages which are needed for the program to run without issues.
+3.2. Run the following command: `pip install -r requirements.txt`. This command will install the necessary packages which are needed for the program to run without issues.
 
-6. Start the program by writing `python Tiktok Username Checker.py` or by simply double clicking the python file.
+4. Start the program by writing `python Tiktok Username Checker.py` or by simply double clicking the python file.
 
 # To-do list
 
