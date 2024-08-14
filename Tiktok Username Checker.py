@@ -115,19 +115,26 @@ while True:
 
         generated_usernames = []
         characters = string.ascii_letters + string.digits + "_."
+        amount_of_generated_usernames = 0
 
-        for i in range(amount_of_usernames):
+        if amount_of_characters == 2 and amount_of_usernames > 4096: # 4096 is the maximum amount of combinations of 2 characters
+            amount_of_usernames = 4096
+            print("Maximum of combinations for 2 character names are 4096.")
+
+        while amount_of_generated_usernames != amount_of_usernames:
             temp_username = ""
             for index in range(amount_of_characters):
                 random_char = random.choice(characters)
                 temp_username += random_char
-            generated_usernames.append(temp_username)
+            if temp_username not in generated_usernames:
+                generated_usernames.append(temp_username)
+                amount_of_generated_usernames += 1
                 
         for generated_username in generated_usernames:
             with open(rf"{directory}\main\usernames.txt", "a") as f:
                 f.write(generated_username + "\n")
         
-        print(Fore.GREEN + f"\nSuccessfully generated {amount_of_usernames} usernames with {amount_of_characters} characters each." + Fore.RESET)
+        print(Fore.GREEN + f"\nSuccessfully generated {amount_of_generated_usernames} usernames with {amount_of_characters} characters each." + Fore.RESET)
         time.sleep(3)
 
     elif menu == 3:
