@@ -1,12 +1,13 @@
 # MADE BY @MDEVIO ON GITHUB
-try:
+try: # Trying to import the required packages
     import requests, ctypes, os, time, random, string
     from colorama import Fore, init
-except ImportError as package_not_installed:
+except ImportError as package_not_installed: # If ImportError is raised, error message is sent.
     input(f"Package {package_not_installed} is not installed.\nPress enter to exit the program.")
+    exit()
 
 def update_title():
-    remaining = len(usernames) - (available + unavailable)
+    remaining = len(usernames) - (available + unavailable) # Formula to calculate the remaining usernames to check
     ctypes.windll.kernel32.SetConsoleTitleW(f"Username Checker for TikTok | Available/Banned: {available} | Unavailable: {unavailable} | Duplicates: {duplicates} | Remaining: {remaining} | Total: {available + unavailable}")
 
 directory = os.path.dirname(os.path.abspath(__file__)) # Get directory path
