@@ -24,7 +24,7 @@ This script can be useful if you want to obtain a username with as few character
 
 # To-do list
 
-- Username generator
+- Check if username is banned (could be impossible)
 
 # Report bugs
 
