@@ -14,13 +14,15 @@ This script can be useful if you want to obtain a username with as few character
 
 2. Extract the zip-file and store the contents somewhere on your drive. To do this I would recommend using either [7-zip](https://www.7-zip.org/download.html) or [WinRAR](https://www.win-rar.com/download.html).
 
-3. Open up the command prompt on your windows machine and set your directory to the directory where you have the Tiktok Username Checker folder. (Hold down shift & right click on the folder, then press "Copy as path".)
+Note: You can skip step 1 and 2 by simply typing the command `git clone https://github.com/mdevio/tiktok-username-checker.git` into your command prompt (in the directory where you want it installed).
 
-4. Run the following command: `cd PATH_YOU_COPIED` into the command prompt.
+4. Open up the command prompt on your windows machine and set your directory to the directory where you have the Tiktok Username Checker folder. (Hold down shift & right click on the folder, then press "Copy as path".)
 
-5. Run the following command: `pip install -r requirements.txt`. This command will install the necessary packages which are needed for the program to run without issues.
+5. Run the following command: `cd PATH_YOU_COPIED` into the command prompt.
 
-6. Start the program by writing `python Tiktok Username Checker.py` or by simply double clicking the python file.
+6. Run the following command: `pip install -r requirements.txt`. This command will install the necessary packages which are needed for the program to run without issues.
+
+7. Start the program by writing `python Tiktok Username Checker.py` or by simply double clicking the python file.
 
 # To-do list
 
