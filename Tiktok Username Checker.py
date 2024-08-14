@@ -28,7 +28,7 @@ $$$$$$$$\ $$\ $$\    $$$$$$$$\        $$\             $$\   $$\                 
                                                                                                                                                                                                                       """
 
 while True:
-    init()
+    init() # Initiate colorama in terminal
     try:
         with open(rf"{directory}\main\usernames.txt", "r") as f:
             lines = f.readlines()
