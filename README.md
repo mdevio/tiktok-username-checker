@@ -25,6 +25,7 @@ This script can be useful if you want to obtain a username with as few character
 # To-do list
 
 - Check if username is banned (could be impossible)
+- Proxy support
 
 # Report bugs
 
