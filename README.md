@@ -1,3 +1,6 @@
+<h1 align="center">⭐ IF YOU ENJOY THE PROJECT PLEASE STAR IT! ⭐</h1>
+
+
 # Tiktok Username Checker (proxyless) - by mdevio
 
 Simple script for checking the availability of tiktok usernames, made in Python 3.12
