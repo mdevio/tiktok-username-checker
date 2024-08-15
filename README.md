@@ -13,7 +13,7 @@ This script can be useful if you want to obtain a username with as few character
 
 # Installation:
 
-You can skip step 1 & 2 by typing the command `git clone https://github.com/mdevio/tiktok-username-checker.git` into your command prompt (in the directory where you want it installed).
+You can skip step 1 & 2 by typing the command `git clone https://github.com/mdevio/tiktok-username-checker.git` into your command prompt (in the directory where you want it installed). Note: You need [git](https://git-scm.com/downloads) installed for this.
 
 1. Install the latest version as a zip-archive with all the files here: [Tiktok Username Checker](https://github.com/mdevio/tiktok-username-checker/archive/refs/heads/main.zip)
 
