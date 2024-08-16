@@ -1,4 +1,4 @@
-import ctypes
+from config import ctypes
 from config import usernames, available, unavailable, duplicates
 
 def update_title():
