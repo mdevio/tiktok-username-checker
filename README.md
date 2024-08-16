@@ -31,6 +31,8 @@ You can skip step 1 & 2 by typing the command `git clone https://github.com/mdev
 
 - Check if username is banned (could be impossible)
 - Proxy support
+- Multithreading
+- Optimize & recode some parts
 
 # Report bugs
 
