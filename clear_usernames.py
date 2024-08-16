@@ -1,4 +1,4 @@
-import time, os
+from config import time, os
 from config import directory, Fore
 from config import usernames
 
