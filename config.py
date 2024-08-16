@@ -1,4 +1,4 @@
-import os, time, keyboard, requests, ctypes
+import os, time, keyboard, requests, ctypes, string, random
 from colorama import Fore, init
 
 available_usernames = set()
