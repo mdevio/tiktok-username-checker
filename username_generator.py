@@ -1,4 +1,4 @@
-import time, os, string, random
+from config import time, os, string, random
 
 from config import directory, Fore
 
