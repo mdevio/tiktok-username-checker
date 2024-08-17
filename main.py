@@ -42,16 +42,34 @@ def main():
 
 
 if __name__ == "__main__":
-    while True:
-        init(autoreset=True) # Initiate colorama in terminal
-        try:
-            f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "r")
-            for username in f.readlines():
-                username = username.rstrip()
-                TiktokUsernameChecker.usernames.add(username)
-            f.close()
-        except FileNotFoundError:
-            f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "x")
-            f.close()
+    init(autoreset=True) # Initiate colorama in terminal
 
-        main()
+    latest_version = TiktokUsernameChecker.check_for_updates(update=False)
+    if latest_version == TiktokUsernameChecker.version: # If user has the latest version - continue
+        pass
+    else:
+        while True:
+            update = input(f"You are using an outdated version!\nVersion installed: {TiktokUsernameChecker.version}\nLatest version: {latest_version}\n\nDo you want to update to the latest version? (yes/no)\n\nYour choice: ").lower()
+            if update == "yes":
+                latest_url = TiktokUsernameChecker.check_for_updates(update=True)
+                print(Fore.GREEN + f"\nHere you can download the latest version: {latest_url}\n")
+                input("Press enter to exit the program.")
+                exit()
+            elif update == "no":
+                break
+            else:
+                print(Fore.RED + "\nYou must choose either yes or no.\n")
+                time.sleep(2.5)
+
+    while True:
+            try:
+                f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "r")
+                for username in f.readlines():
+                    username = username.rstrip()
+                    TiktokUsernameChecker.usernames.add(username)
+                f.close()
+            except FileNotFoundError:
+                f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "x")
+                f.close()
+
+            main()
