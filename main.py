@@ -44,9 +44,14 @@ def main():
 if __name__ == "__main__":
     while True:
         init(autoreset=True) # Initiate colorama in terminal
-        f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "r")
-        for username in f.readlines():
-            username = username.rstrip()
-            TiktokUsernameChecker.usernames.add(username)
+        try:
+            f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "r")
+            for username in f.readlines():
+                username = username.rstrip()
+                TiktokUsernameChecker.usernames.add(username)
+            f.close()
+        except FileNotFoundError:
+            f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "x")
+            f.close()
 
         main()
