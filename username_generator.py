@@ -1,6 +1,6 @@
 from config import time, os, string, random
-
-from config import directory, Fore
+from config import Fore
+from config import TiktokUsernameChecker
 
 def username_generator():
     try:
@@ -37,9 +37,9 @@ def username_generator():
         if temp_username not in generated_usernames:
             generated_usernames.add(temp_username)
             
+    f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "a")
     for _ in generated_usernames:
-        with open(rf"{directory}\output\usernames.txt", "a") as f:
-            f.write(_ + "\n")
+        f.write(_ + "\n")
     
     print(Fore.GREEN + f"\nSuccessfully generated {amount_of_usernames} usernames with {amount_of_characters} characters each.")
     time.sleep(3)

@@ -1,13 +1,11 @@
 from config import time, os
-from config import directory, Fore
-from config import usernames
+from config import Fore
+from config import TiktokUsernameChecker
 
 def clear_usernames():
-    global usernames
-    if usernames:
-        usernames = set()
-        with open(rf"{directory}\output\usernames.txt", "w"):
-            pass
+    if TiktokUsernameChecker.usernames:
+        TiktokUsernameChecker.usernames = set()
+        TiktokUsernameChecker.WriteOrRead("usernames.txt", "w")
         print(Fore.GREEN + "\nSuccessfully cleared the usernames.\n")
         time.sleep(2.5)
         os.system("cls")

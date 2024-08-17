@@ -1,10 +1,9 @@
 # MADE BY @MDEVIO ON GITHUB
 
 try: # Trying to import the required packages & functions
+    from config import TiktokUsernameChecker
     from config import os, time
     from config import Fore, init
-    from config import directory, title, usernames
-    from config import available, unavailable, duplicates
     from username_generator import username_generator
     from checker import checker
     from update_title import update_title
@@ -16,11 +15,10 @@ except ImportError as package_not_installed: # If ImportError is raised, error m
 
 
 def main():
-    global available, unavailable, duplicates
     while True:
         try:
-            update_title()
-            print("\n" + title)
+            update_title("main")
+            print("\n" + TiktokUsernameChecker.title + "\n\n")
             menu = int(input("[1] Start the TikTok Username Checker\n[2] Username Generator\n[3] Clear 'usernames.txt'\n[4] Exit\n\nYour choice: "))
             break
 
@@ -43,17 +41,12 @@ def main():
         os.system("cls")
 
 
-while True:
-    init(autoreset=True) # Initiate colorama in terminal
-    try:
-        with open(rf"{directory}\output\usernames.txt", "r") as f:
-            lines = f.readlines()
-            for username in lines:
-                username = username.rstrip()
-                usernames.add(username)
+if __name__ == "__main__":
+    while True:
+        init(autoreset=True) # Initiate colorama in terminal
+        f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "r")
+        for username in f.readlines():
+            username = username.rstrip()
+            TiktokUsernameChecker.usernames.add(username)
 
-    except FileNotFoundError:
-        with open(rf"{directory}\output\usernames.txt", "x") as f:
-            pass
-
-    main()
+        main()
