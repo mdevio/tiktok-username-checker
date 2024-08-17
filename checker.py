@@ -11,29 +11,26 @@ def checker():
                 os.system("cls")
                 print(Fore.RED + "Stopping the TikTok Username Checker!")
                 break
-            if username in TiktokUsernameChecker.tried_usernames:
-                TiktokUsernameChecker.duplicates += 1
-                print(Fore.YELLOW + "[Duplicate] " + TiktokUsernameChecker.endpoint + username)
-            elif username not in TiktokUsernameChecker.tried_usernames:
-                request = requests.get(TiktokUsernameChecker.endpoint + username)
-                if request.status_code == 200:
-                    TiktokUsernameChecker.tried_usernames.add(username)
+            request = requests.get(TiktokUsernameChecker.endpoint + username)
+            if request.status_code == 200:
+                TiktokUsernameChecker.tried_usernames.add(username)
 
-                    if "followingcount" not in request.text.lower():
-                        TiktokUsernameChecker.available += 1
-                        TiktokUsernameChecker.available_usernames.add(username)
-                        print(Fore.GREEN + "[Available/Banned] " + request.url)
-                    elif "followingcount" in request.text.lower() or username.isdigit():
-                        TiktokUsernameChecker.unavailable += 1
-                        print(Fore.RED + "[Unavailable]      " + request.url)
-                else:
-                    print("Ratelimited!")
+                if "followingcount" not in request.text.lower():
+                    TiktokUsernameChecker.available += 1
+                    TiktokUsernameChecker.available_usernames.add(username)
+                    print(Fore.GREEN + "[Available/Banned] " + request.url)
+                elif "followingcount" in request.text.lower() or username.isdigit():
+                    TiktokUsernameChecker.unavailable += 1
+                    print(Fore.RED + "[Unavailable]      " + request.url)
+            else:
+                print("Ratelimited!")
 
             update_title("checker")
-            TiktokUsernameChecker.tried_usernames = set()
 
-        for username in TiktokUsernameChecker.tried_usernames:
-                TiktokUsernameChecker.usernames.remove(username)
+        for username in TiktokUsernameChecker.tried_usernames: # Remove all tried usernames from usernames
+            TiktokUsernameChecker.usernames.remove(username)
+
+        TiktokUsernameChecker.tried_usernames = set() # Reset tried_usernames variable
 
         try:
             f = TiktokUsernameChecker.WriteOrRead("available_usernames.txt", "x")
@@ -43,7 +40,7 @@ def checker():
             for username in TiktokUsernameChecker.available_usernames:
                 f.write(username + "\n")
                 
-        print(f"\nAll of the {TiktokUsernameChecker.available+TiktokUsernameChecker.unavailable} usernames were checked. The results are the following:\n\nAvailable: {TiktokUsernameChecker.available}\nUnavailable: {TiktokUsernameChecker.unavailable}\nDuplicates: {TiktokUsernameChecker.duplicates}\n\nAll of the available names were saved in a txt file called 'available_usernames.txt' in the output folder in the same directory as the python file.")
+        print(f"\nAll of the {TiktokUsernameChecker.available+TiktokUsernameChecker.unavailable} usernames were checked. The results are the following:\n\nAvailable: {TiktokUsernameChecker.available}\nUnavailable: {TiktokUsernameChecker.unavailable}\n\nAll of the available names were saved in a txt file called 'available_usernames.txt' in the output folder in the same directory as the python file.")
         input("Press enter to continue.")
         os.system("cls")
     else:

@@ -5,7 +5,6 @@ from colorama import Fore, init
 class TiktokUsernameChecker:
     available = 0
     unavailable = 0
-    duplicates = 0
     usernames = set()
     directory = os.path.dirname(os.path.abspath(__file__)) # Get directory path 
     endpoint = "https://www.tiktok.com/@"

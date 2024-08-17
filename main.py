@@ -19,7 +19,7 @@ def main():
         try:
             update_title("main")
             print("\n" + TiktokUsernameChecker.title + "\n\n")
-            menu = int(input("[1] Start the TikTok Username Checker\n[2] Username Generator\n[3] Clear 'usernames.txt'\n[4] Exit\n\nYour choice: "))
+            menu = int(input("[1] Start the TikTok Username Checker\n[2] Username Generator\n[3] Clear 'usernames.txt' and cache\n[4] Exit\n\nYour choice: "))
             break
 
         except ValueError:
