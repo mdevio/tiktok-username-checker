@@ -39,6 +39,7 @@ def checker():
         finally:
             for username in TiktokUsernameChecker.available_usernames:
                 f.write(username + "\n")
+            f.close()
                 
         print(f"\nAll of the {TiktokUsernameChecker.available+TiktokUsernameChecker.unavailable} usernames were checked. The results are the following:\n\nAvailable: {TiktokUsernameChecker.available}\nUnavailable: {TiktokUsernameChecker.unavailable}\n\nAll of the available names were saved in a txt file called 'available_usernames.txt' in the output folder in the same directory as the python file.")
         input("Press enter to continue.")

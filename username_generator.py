@@ -40,6 +40,7 @@ def username_generator():
     f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "a")
     for _ in generated_usernames:
         f.write(_ + "\n")
+    f.close()
     
     print(Fore.GREEN + f"\nSuccessfully generated {amount_of_usernames} usernames with {amount_of_characters} characters each.")
     time.sleep(3)

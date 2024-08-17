@@ -5,7 +5,8 @@ from config import TiktokUsernameChecker
 def clear_usernames():
     if TiktokUsernameChecker.usernames:
         TiktokUsernameChecker.usernames = set()
-        TiktokUsernameChecker.WriteOrRead("usernames.txt", "w")
+        f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "w")
+        f.close()
         TiktokUsernameChecker.available = 0
         TiktokUsernameChecker.unavailable = 0
         print(Fore.GREEN + "\nSuccessfully cleared the usernames.\n")
