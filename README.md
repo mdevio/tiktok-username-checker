@@ -3,7 +3,7 @@
 
 # Tiktok Username Checker (proxyless) - by mdevio
 
-Simple script for checking the availability of tiktok usernames, made in Python 3.12
+Simple script for checking the availability of tiktok usernames and generating usernames, made in Python 3.12
 
 This script can be useful if you want to obtain a username with as few characters in it as possible.
 
