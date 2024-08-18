@@ -7,6 +7,11 @@ Simple script for checking the availability of tiktok usernames and generating u
 
 This script can be useful if you want to obtain a username with as few characters in it as possible.
 
+# Preview
+
+![image](https://github.com/user-attachments/assets/67c4fc43-765e-4446-b643-1d07376ad556)
+![image](https://github.com/user-attachments/assets/19bbda0d-67bb-490f-8cef-9dd5e91e647b)
+
 # Requirements
 
 - [Python](https://www.python.org/downloads/)
