@@ -7,11 +7,6 @@ Simple script for checking the availability of tiktok usernames and generating u
 
 This script can be useful if you want to obtain a username with as few characters in it as possible.
 
-# Preview
-
-![image](https://github.com/user-attachments/assets/67c4fc43-765e-4446-b643-1d07376ad556)
-![image](https://github.com/user-attachments/assets/19bbda0d-67bb-490f-8cef-9dd5e91e647b)
-
 # Requirements
 
 - [Python](https://www.python.org/downloads/)
@@ -31,6 +26,11 @@ You can skip step 1 & 2 by typing the command `git clone https://github.com/mdev
 5. Run the following command: `pip install -r requirements.txt`. This command will install the necessary packages which are needed for the program to run without issues.
 
 6. Start the program by writing `python main.py` or by simply double clicking the python file.
+
+# Preview
+
+![image](https://github.com/user-attachments/assets/67c4fc43-765e-4446-b643-1d07376ad556)
+![image](https://github.com/user-attachments/assets/19bbda0d-67bb-490f-8cef-9dd5e91e647b)
 
 # To-do list
 
