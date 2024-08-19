@@ -2,7 +2,7 @@
 
 try: # Trying to import the required packages & functions
     from config import TiktokUsernameChecker
-    from config import os, time
+    from config import os, time, keyboard
     from config import Fore, init
     from username_generator import username_generator
     from checker import checker
@@ -10,22 +10,29 @@ try: # Trying to import the required packages & functions
     from clear_usernames import clear_usernames
 
 except ImportError as package_not_installed: # If ImportError is raised, error message is sent.
-    input(f"Package {package_not_installed} is not installed. Please follow the instructions on github.\nPress enter to exit the program.")
+    input(f"{package_not_installed} is installed. Please follow the instructions on github.\nPress enter to exit the program.")
     exit()
 
 
 def main():
     while True:
-        try:
-            update_title("main")
-            print("\n" + TiktokUsernameChecker.title + "\n\n")
-            menu = int(input("[1] Start the TikTok Username Checker\n[2] Username Generator\n[3] Clear 'usernames.txt' and cache\n[4] Exit\n\nYour choice: "))
-            break
+        update_title("main")
+        print("\n\n" + TiktokUsernameChecker.title + "\n\n")
+        print("[1] Start the TikTok Username Checker\n[2] Username Generator\n[3] Clear 'usernames.txt' and cache\n[4] Exit\n")
 
-        except ValueError:
-            print(Fore.RED + "\nChoose either 1, 2, 3 or 4.\n")
-            time.sleep(2.5)
-            os.system("cls")
+        while True:
+            event = keyboard.read_event(suppress=True)
+            if event.name in ['1', '2', '3', '4']:
+                menu = int(event.name)
+                break
+            else:
+                print(Fore.RED + "\nChoose either 1, 2, 3 or 4.\n")
+                time.sleep(2.5)
+                os.system("cls")
+                break
+
+        if event.name in ['1', '2', '3', '4']:
+            break
 
     if menu == 1:
         checker()

@@ -1,15 +1,16 @@
-import os, time, keyboard, requests, ctypes, string, random
+import os, time, keyboard, requests, ctypes, string, random, shutil
 from colorama import Fore, init
 
 
 class TiktokUsernameChecker:
-    version = "v1.3.3"
+    version = "v1.4.0"
     available = 0
     unavailable = 0
     usernames = set()
     directory = os.path.dirname(os.path.abspath(__file__)) # Get directory path 
     endpoint = "https://www.tiktok.com/@"
     githubapi_endpoint = "https://api.github.com/repos/mdevio/tiktok-username-checker/releases/latest"
+    pycache_dir = f"{directory}\__pycache__"
     available_usernames = set()
     tried_usernames = set()
     title = r"""

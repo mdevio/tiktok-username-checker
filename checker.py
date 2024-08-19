@@ -41,9 +41,10 @@ def checker():
                 f.write(username + "\n")
             f.close()
                 
-        print(f"\nAll of the {TiktokUsernameChecker.available+TiktokUsernameChecker.unavailable} usernames were checked. The results are the following:\n\nAvailable: {TiktokUsernameChecker.available}\nUnavailable: {TiktokUsernameChecker.unavailable}\n\nAll of the available names were saved in a txt file called 'available_usernames.txt' in the output folder in the same directory as the python file.")
-        input("Press enter to continue.")
+        print(f"\nYou have checked {TiktokUsernameChecker.available+TiktokUsernameChecker.unavailable} usernames. The results are the following:\n\nAvailable: {TiktokUsernameChecker.available}\nUnavailable: {TiktokUsernameChecker.unavailable}\n\nAll of the available usernames has been saved in a file named 'available_usernames.txt' in the output folder.")
+        input("\nPress enter to continue.")
         os.system("cls")
+        keyboard.read_event(suppress=True)
     else:
         print(Fore.RED + "The file 'usernames.txt' is empty. Please generate usernames via the menu or input usernames in the file.")
         time.sleep(3)
