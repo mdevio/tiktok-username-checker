@@ -3,8 +3,6 @@ from config import Fore
 from config import TiktokUsernameChecker
 
 def clear_usernames():
-    TiktokUsernameChecker.available = 0
-    TiktokUsernameChecker.unavailable = 0
     if os.path.exists(TiktokUsernameChecker.pycache_dir):
         shutil.rmtree(TiktokUsernameChecker.pycache_dir)
         print(Fore.GREEN + "\nSuccessfully cleared the pycache.\n")

@@ -25,7 +25,6 @@ def username_generator():
         except ValueError:
             print(Fore.RED + "Please enter only integers.")
 
-
     generated_usernames = set()
     characters = string.ascii_lowercase + string.digits + "_."
 

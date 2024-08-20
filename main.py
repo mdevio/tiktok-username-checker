@@ -5,7 +5,7 @@ try: # Trying to import the required packages & functions
     from config import os, time, keyboard
     from config import Fore, init
     from username_generator import username_generator
-    from checker import checker
+    from checker import checker_main
     from update_title import update_title
     from clear_usernames import clear_usernames
 
@@ -22,7 +22,7 @@ def main():
 
         while True:
             event = keyboard.read_event(suppress=True)
-            if event.name in ['1', '2', '3', '4']:
+            if event.name in ["1", "2", "3", "4"]:
                 menu = int(event.name)
                 break
             else:
@@ -31,11 +31,26 @@ def main():
                 os.system("cls")
                 break
 
-        if event.name in ['1', '2', '3', '4']:
+        if event.name in ["1", "2", "3", "4"]:
             break
 
     if menu == 1:
-        checker()
+        try:
+            while True:
+                time.sleep(0.1)
+                print("How many threads do you want to use? (1-9)\n")
+                TiktokUsernameChecker.threads = keyboard.read_event(suppress=True)
+                if int(TiktokUsernameChecker.threads.name) > 0 and int(TiktokUsernameChecker.threads.name) <= 9:
+                    TiktokUsernameChecker.threads = int(TiktokUsernameChecker.threads.name)
+                    break
+                elif int(TiktokUsernameChecker.threads.name) > 9:
+                    print(Fore.RED + "\nYou can choose max 9 threads to prevent ratelimits.\n")
+                elif int(TiktokUsernameChecker.threads.name) <= 0:
+                    print(Fore.RED + "\nYou have to choose atleast 1 thread.\n")
+        except ValueError:
+            print(Fore.RED + "\nYou must write an integer between 1-9.\n")
+        checker_main()
+
     elif menu == 2:
         username_generator()
     elif menu == 3:
@@ -71,9 +86,7 @@ if __name__ == "__main__":
     while True:
             try:
                 f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "r")
-                for username in f.readlines():
-                    username = username.rstrip()
-                    TiktokUsernameChecker.usernames.add(username)
+                TiktokUsernameChecker.usernames = {line.strip() for line in f}
                 f.close()
             except FileNotFoundError:
                 f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "x")
