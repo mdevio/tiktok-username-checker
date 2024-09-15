@@ -1,3 +1,4 @@
+# MADE BY @MDEVIO ON GITHUB
 from config import time, os, string, random
 from config import Fore
 from config import TiktokUsernameChecker

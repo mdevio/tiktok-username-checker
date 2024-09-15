@@ -1,10 +1,11 @@
+# MADE BY @MDEVIO ON GITHUB
 import os, time, keyboard, requests, ctypes, string, random, shutil, platform, threading
 from colorama import Fore, init
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
 class TiktokUsernameChecker:
-    version = "v1.5.0"
+    version = "v1.5.1"
     available = 0
     unavailable = 0
     threads = 5
@@ -18,7 +19,6 @@ class TiktokUsernameChecker:
     pycache_dir = rf"{directory}\__pycache__"
     available_usernames = set()
     tried_usernames = set()
-    stop = False
     title = r"""
     $$$$$$$$\ $$$$$$$$\ $$\   $$\  $$$$$$\  
     \__$$  __|\__$$  __|$$ |  $$ |$$  __$$\ 

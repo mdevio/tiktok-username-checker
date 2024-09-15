@@ -1,3 +1,4 @@
+# MADE BY @MDEVIO ON GITHUB
 from config import os, keyboard, Fore, requests, time, threading, ThreadPoolExecutor, as_completed
 from update_title import update_title
 from config import TiktokUsernameChecker
@@ -29,7 +30,7 @@ def checker_main():
                 f.write(username + "\n")
             f.close()
                 
-        print(f"\nYou have checked {TiktokUsernameChecker.available+TiktokUsernameChecker.unavailable} usernames. The results are the following:\n\nAvailable: {TiktokUsernameChecker.available}\nUnavailable: {TiktokUsernameChecker.unavailable}\n\nAll of the available usernames has been saved in a file named 'available_usernames.txt' in the output folder.")
+        print(f"\nYou have checked {TiktokUsernameChecker.available+TiktokUsernameChecker.unavailable} usernames. The results are the following:\n\nAvailable/Banned: {TiktokUsernameChecker.available}\nUnavailable: {TiktokUsernameChecker.unavailable}\n\nAll of the available usernames has been saved in a file named 'available_usernames.txt' in the output folder.")
         input("\nPress enter to continue.")
         os.system("cls")
         TiktokUsernameChecker.available = 0

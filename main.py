@@ -48,7 +48,7 @@ def main():
                 elif int(TiktokUsernameChecker.threads.name) <= 0:
                     print(Fore.RED + "\nYou have to choose atleast 1 thread.\n")
         except ValueError:
-            print(Fore.RED + "\nYou must write an integer between 1-9.\n")
+            print(Fore.RED + "\nYou must choose an integer between 1-9.\n")
         checker_main()
 
     elif menu == 2:
@@ -92,4 +92,5 @@ if __name__ == "__main__":
                 f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "x")
                 f.close()
 
-            main()
+            if __name__ == "__main__":
+                main()

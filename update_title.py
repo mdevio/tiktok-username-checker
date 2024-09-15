@@ -1,3 +1,4 @@
+# MADE BY @MDEVIO ON GITHUB
 from config import ctypes
 from config import TiktokUsernameChecker
 
