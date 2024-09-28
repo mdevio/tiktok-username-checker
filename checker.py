@@ -56,7 +56,11 @@ def checker(username):
         TiktokUsernameChecker.tried_usernames.add(username)
         if len(TiktokUsernameChecker.usernames) == len(TiktokUsernameChecker.tried_usernames):
             TiktokUsernameChecker.stop_event.set()
+
         request = requests.get(TiktokUsernameChecker.endpoint + username)
+        while len(request.text) < 200000:
+            request = requests.get(TiktokUsernameChecker.endpoint + username)
+
         if request.status_code == 200:
             if "followingcount" in request.text.lower() or username.isdigit():
                 with TiktokUsernameChecker.lock:
