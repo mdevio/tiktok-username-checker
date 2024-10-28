@@ -1,5 +1,6 @@
 <h1 align="center">⭐ IF YOU ENJOY THE PROJECT PLEASE STAR IT! ⭐</h1>
 
+<h2 align="center"><a href="https://usernamechecker.netlify.app/">CHECK USERNAME AVAILABILITY ACROSS MULTIPLE PLATFORMS WITH ONE CLICK!</a></h2>
 
 # Tiktok Username Checker (proxyless) - by mdevio
 
