@@ -5,7 +5,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
 class TiktokUsernameChecker:
-    version = "v1.5.2"
+    version = "v1.5.3"
     available = 0
     unavailable = 0
     threads = 5

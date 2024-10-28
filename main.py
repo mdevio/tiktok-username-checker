@@ -17,6 +17,7 @@ except ImportError as package_not_installed: # If ImportError is raised, error m
 def main():
     while True:
         update_title("main")
+        print("CHECK USERNAME AVAILABILITY ACROSS MULTIPLE PLATFORMS WITH ONE CLICK ONLY: https://usernamechecker.netlify.app/")
         print("\n\n" + TiktokUsernameChecker.title + "\n\n")
         print("[1] Start the TikTok Username Checker\n[2] Username Generator\n[3] Clear 'usernames.txt' and cache\n[4] Exit\n")
 
