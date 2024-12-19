@@ -4,6 +4,9 @@ from update_title import update_title
 from config import TiktokUsernameChecker
 
 def checker_main():
+    """
+    Main function for the Checker
+    """
     global executor
     if TiktokUsernameChecker.usernames:
         os.system("cls")
@@ -44,12 +47,18 @@ def checker_main():
         os.system("cls")
 
 def monitor_spacebar():
+    """
+    Monitors the spacebar key to stop the TikTok Username Checker
+    """
     while not TiktokUsernameChecker.stop_event.is_set():
         if keyboard.is_pressed('space'):
             TiktokUsernameChecker.stop_event.set()
             break
 
 def checker(username):
+    """
+    Checks the availability of a TikTok username
+    """
     try:
         if TiktokUsernameChecker.stop_event.is_set():
             return

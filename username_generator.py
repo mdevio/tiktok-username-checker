@@ -4,6 +4,9 @@ from config import Fore
 from config import TiktokUsernameChecker
 
 def username_generator():
+    """
+    Generates usernames with a specified amount of characters
+    """
     while True:
         try:
             amount_of_usernames = int(input("\nHow many usernames do you want to generate? (Max 10K)\n\nYour choice: "))

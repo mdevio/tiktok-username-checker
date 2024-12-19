@@ -4,6 +4,9 @@ from config import Fore
 from config import TiktokUsernameChecker
 
 def clear_usernames():
+    """
+    Clears the usernames from the usernames.txt file and the pycache directory
+    """
     if os.path.exists(TiktokUsernameChecker.pycache_dir):
         shutil.rmtree(TiktokUsernameChecker.pycache_dir)
         print(Fore.GREEN + "\nSuccessfully cleared the pycache.\n")

@@ -15,6 +15,9 @@ except ImportError as package_not_installed: # If ImportError is raised, error m
 
 
 def main():
+    """
+    Main function which holds the main menu for the program.
+    """
     while True:
         update_title("main")
         print("CHECK USERNAME AVAILABILITY ACROSS MULTIPLE PLATFORMS WITH ONE CLICK ONLY: https://usernamechecker.netlify.app/")
@@ -85,13 +88,12 @@ if __name__ == "__main__":
                 time.sleep(2.5)
 
     while True:
-            try:
-                f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "r")
-                TiktokUsernameChecker.usernames = {line.strip() for line in f}
-                f.close()
-            except FileNotFoundError:
-                f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "x")
-                f.close()
+        try:
+            f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "r")
+            TiktokUsernameChecker.usernames = {line.strip() for line in f}
+            f.close()
+        except FileNotFoundError:
+            f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "x")
+            f.close()
 
-            if __name__ == "__main__":
-                main()
+        main()
