@@ -20,7 +20,10 @@ def main():
     """
     while True:
         update_title("main")
-        print("CHECK USERNAME AVAILABILITY ACROSS MULTIPLE PLATFORMS WITH ONE CLICK ONLY: https://usernamechecker.netlify.app/")
+        for i in range(0, 10):
+            print("CHECK USERNAME AVAILABILITY ACROSS 20+ PLATFORMS WITH ONE CLICK ONLY: https://usernamechecker.netlify.app/")
+            time.sleep(0.1)
+        time.sleep(2.5)
         print("\n\n" + TiktokUsernameChecker.title + "\n\n")
         print("[1] Start the TikTok Username Checker\n[2] Username Generator\n[3] Clear 'usernames.txt' and cache\n[4] Exit\n")
 
