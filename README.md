@@ -1,4 +1,4 @@
-<h1 align="center"><a href="https://usernamechecker.netlify.app/">:exclamation::exclamation::exclamation: CHECK USERNAMES ACROSS MULTIPLE PLATFORMS HERE :exclamation::exclamation::exclamation:</a></h1>
+<h1 align="center"><a href="https://usernamechecker.netlify.app/">:exclamation::exclamation::exclamation: CHECK USERNAMES ACROSS 20+ PLATFORMS HERE :exclamation::exclamation::exclamation:</a></h1>
 
 <h1 align="center">⭐ IF YOU ENJOY THE PROJECT PLEASE STAR IT! ⭐</h1>
 
