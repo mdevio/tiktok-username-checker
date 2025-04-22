@@ -21,7 +21,7 @@ def main():
     while True:
         update_title("main")
         for i in range(0, 10):
-            print("CHECK USERNAME AVAILABILITY ACROSS 20+ PLATFORMS WITH ONE CLICK ONLY: https://usernamechecker.netlify.app/")
+            print("CHECK USERNAME AVAILABILITY ACROSS 20 PLATFORMS WITH ONLY 1 CLICK: https://usernamechecker.online/")
             time.sleep(0.1)
         time.sleep(2.5)
         print("\n\n" + TiktokUsernameChecker.title + "\n\n")
