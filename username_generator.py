@@ -39,7 +39,7 @@ def username_generator():
 
     while len(generated_usernames) < amount_of_usernames:
         _ = ''.join(random.choice(characters) for _ in range(amount_of_characters))
-        if _ not in generated_usernames:
+        if _ not in generated_usernames and _[-1] != '.':
             generated_usernames.add(_)
             
     f = TiktokUsernameChecker.WriteOrRead("usernames.txt", "a")

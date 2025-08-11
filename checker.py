@@ -1,5 +1,5 @@
 # MADE BY @MDEVIO ON GITHUB
-from config import os, keyboard, Fore, requests, time, threading, ThreadPoolExecutor, as_completed
+from config import os, keyboard, Fore, cloudscraper, time, threading, ThreadPoolExecutor, as_completed, random
 from update_title import update_title
 from config import TiktokUsernameChecker
 
@@ -7,12 +7,19 @@ def checker_main():
     """
     Main function for the Checker
     """
-    global executor
+    global executor, scraper, headers_list
     if TiktokUsernameChecker.usernames:
         os.system("cls")
         spacebar_thread = threading.Thread(target=monitor_spacebar) # spacebar thread
         spacebar_thread.start() # start spacebar thread
-        
+        scraper = cloudscraper.create_scraper()
+
+        headers_list = [
+            {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"},
+            {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36"},
+            {"User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"}
+        ]
+
         with ThreadPoolExecutor(max_workers=int(TiktokUsernameChecker.threads)) as executor:
             futures = [executor.submit(checker, username) for username in TiktokUsernameChecker.usernames]
             spacebar_thread.join() # join
@@ -66,23 +73,28 @@ def checker(username):
         if len(TiktokUsernameChecker.usernames) == len(TiktokUsernameChecker.tried_usernames):
             TiktokUsernameChecker.stop_event.set()
 
-        request = requests.get(TiktokUsernameChecker.endpoint + username)
-        while len(request.text) < 200000:
-            request = requests.get(TiktokUsernameChecker.endpoint + username)
+        if not username.isdigit():
+            request = scraper.get(TiktokUsernameChecker.endpoint + username, headers=random.choice(headers_list))
+            while len(request.text) < 200000:
+                request = scraper.get(TiktokUsernameChecker.endpoint + username, headers=random.choice(headers_list))
 
-        if request.status_code == 200:
-            if "followingcount" in request.text.lower() or username.isdigit():
+            if request.status_code == 200:
+                if "followingcount" in request.text.lower():
+                    with TiktokUsernameChecker.lock:
+                        TiktokUsernameChecker.unavailable += 1
+                        print(Fore.RED + "[Unavailable]      " + request.url)
+                elif "followingcount" not in request.text.lower():
+                    with TiktokUsernameChecker.lock:
+                        TiktokUsernameChecker.available += 1
+                        TiktokUsernameChecker.available_usernames.add(username)
+                        print(Fore.GREEN + "[Available/Banned] " + request.url)
+            else:
                 with TiktokUsernameChecker.lock:
-                    TiktokUsernameChecker.unavailable += 1
-                    print(Fore.RED + "[Unavailable]      " + request.url)
-            elif "followingcount" not in request.text.lower():
-                with TiktokUsernameChecker.lock:
-                    TiktokUsernameChecker.available += 1
-                    TiktokUsernameChecker.available_usernames.add(username)
-                    print(Fore.GREEN + "[Available/Banned] " + request.url)
+                    print("Ratelimited!")
         else:
             with TiktokUsernameChecker.lock:
-                print("Ratelimited!")
+                TiktokUsernameChecker.unavailable += 1
+                print(Fore.RED + "[Unavailable]      " + request.url)
         update_title("checker")
     except Exception as e:
         with TiktokUsernameChecker.lock:
