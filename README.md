@@ -1,4 +1,4 @@
-<h1 align="center"><a href="https://usernamechecker.online/">:exclamation: CHECK USERNAMES ACROSS 20 PLATFORMS HERE :exclamation:</a></h1>
+<h1 align="center"><a href="https://usernamechecker.online/">:exclamation: CHECK USERNAMES ACROSS 25 PLATFORMS HERE :exclamation:</a></h1>
 
 <h1 align="center">⭐ IF YOU ENJOY THE PROJECT PLEASE STAR IT! ⭐</h1>
 
