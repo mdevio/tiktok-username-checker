@@ -1,5 +1,5 @@
 # MADE BY @MDEVIO ON GITHUB
-from config import os, keyboard, Fore, cloudscraper, time, threading, ThreadPoolExecutor, as_completed, random
+from config import os, keyboard, Fore, cloudscraper, time, threading, ThreadPoolExecutor, as_completed, random, msvcrt
 from update_title import update_title
 from config import TiktokUsernameChecker
 
@@ -10,21 +10,34 @@ def checker_main():
     global executor, scraper, headers_list
     if TiktokUsernameChecker.usernames:
         os.system("cls")
-        spacebar_thread = threading.Thread(target=monitor_spacebar) # spacebar thread
-        spacebar_thread.start() # start spacebar thread
+        global scraper, headers_list
         scraper = cloudscraper.create_scraper()
-
         headers_list = [
             {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"},
             {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36"},
             {"User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"}
         ]
+        stop_event = TiktokUsernameChecker.stop_event
 
-        with ThreadPoolExecutor(max_workers=int(TiktokUsernameChecker.threads)) as executor:
-            futures = [executor.submit(checker, username) for username in TiktokUsernameChecker.usernames]
-            spacebar_thread.join() # join
-            for future in as_completed(futures):
-                future.result()
+        def run_checker():
+            with ThreadPoolExecutor(max_workers=int(TiktokUsernameChecker.threads)) as executor:
+                futures = [executor.submit(checker, username) for username in TiktokUsernameChecker.usernames]
+                for future in as_completed(futures):
+                    future.result()
+
+        checker_thread = threading.Thread(target=run_checker)
+        checker_thread.start()
+
+        print("Press SPACE in this window to stop checking usernames at any time.")
+        while checker_thread.is_alive():
+            if msvcrt.kbhit():
+                key = msvcrt.getch()
+                if key == b' ':
+                    stop_event.set()
+                    print("\n[Stopped by SPACE]")
+                    break
+            time.sleep(0.05)
+        checker_thread.join()
 
         for username in TiktokUsernameChecker.tried_usernames: # Remove all tried usernames from usernames
             TiktokUsernameChecker.usernames.remove(username)

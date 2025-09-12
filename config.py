@@ -1,11 +1,11 @@
 # MADE BY @MDEVIO ON GITHUB
-import os, time, keyboard, requests, cloudscraper, ctypes, string, random, shutil, platform, threading
+import os, time, keyboard, requests, cloudscraper, ctypes, string, random, shutil, platform, threading, msvcrt
 from colorama import Fore, init
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
 class TiktokUsernameChecker:
-    version = "v1.7.0"
+    version = "v1.7.1"
     available = 0
     unavailable = 0
     threads = 5
