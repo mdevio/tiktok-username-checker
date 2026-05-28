@@ -20,10 +20,7 @@ def main():
     """
     while True:
         update_title("main")
-        for i in range(0, 10):
-            print("CHECK AND GENERATE USERNAMES ACROSS 25 POPULAR PLATFORMS HERE: https://usernamechecker.online/")
-            time.sleep(0.1)
-        time.sleep(2.5)
+        time.sleep(0.5)
         print("\n\n" + TiktokUsernameChecker.title + "\n\n")
         print("[1] Start the TikTok Username Checker\n[2] Username Generator\n[3] Clear 'usernames.txt' and cache\n[4] Exit\n")
 
